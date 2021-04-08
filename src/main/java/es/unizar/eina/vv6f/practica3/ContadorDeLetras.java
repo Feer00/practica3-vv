@@ -54,8 +54,8 @@ public class ContadorDeLetras {
         if (frecuencias == null) {
             Scanner fichero = new Scanner(this.fichero);
             frecuencias = new int[alphabet]; // por defecto Java inicializa todas las componentes del array de enteros a 0 no hay q hacer bucle
-            while (fichero.hasNext()){
-                String linealeida = fichero.next();
+            while (fichero.hasNextLine()){
+                String linealeida = fichero.nextLine();
                 for(int i=0; i< linealeida.length();i++){
                     contarCaracteres(linealeida.charAt(i));
                 }
