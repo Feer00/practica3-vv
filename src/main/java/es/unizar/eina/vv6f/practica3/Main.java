@@ -1,5 +1,9 @@
 package es.unizar.eina.vv6f.practica3;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /**
  * Programa Java que, al iniciar su ejecución, solicita al usuario el nombre de un fichero de texto.
  * A continuación, si el fichero existe y se puede leer, muestra en la salida estándar una lista de
@@ -30,7 +34,20 @@ public class Main {
      * @param args
      *            no utilizado.
      */
-    public static void main(String[] args) {
-        // TODO
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nombre de un fichero de texto: ");
+        String nomFich = scanner.next();
+        ContadorDeLetras contador = new ContadorDeLetras(new File(nomFich));
+        int[] vecFrecuencias = new int[27];
+        vecFrecuencias = contador.frecuencias();
+        for (int i = 0; i< 14; i++){
+            System.out.format(FORMATO_SALIDA_FRECUENCIAS,'A'+ i,vecFrecuencias[i]);
+        }
+        System.out.format(FORMATO_SALIDA_FRECUENCIAS,'Ñ',vecFrecuencias[26]);
+        for (int i = 14; i< vecFrecuencias.length-1; i++){
+            System.out.format(FORMATO_SALIDA_FRECUENCIAS,'A'+ i,vecFrecuencias[i]);
+        }
+        scanner.close();
     }
 }
