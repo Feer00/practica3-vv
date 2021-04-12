@@ -5,6 +5,8 @@ import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -123,7 +125,21 @@ class ContadorDeLetrasTest {
         vectoraComparar[0] = 1;
         assertArrayEquals(contador.frecuencias(),vectoraComparar);
     }
+    @Test  //Test numero 14 para comprobar la correcta lectura cuando this.frecuencias es no nulo
+    public void comprobar_frecuencia_no_nulo() throws IOException,FileNotFoundException {
+        String file = "src/main/res/mayusModificada.txt";
+        FileWriter fw=new FileWriter(file);
+        fw.write("QWERTYUIOPASDFGHJKLZXCVBNMÑ");
+        fw.close();
+        ContadorDeLetras contador = new ContadorDeLetras(new File(file));
+        contador.frecuencias();
 
+        fw=new FileWriter(file);
+        fw.write("ÁÀÄÉÈËÍÌÏÓÒÖÚÙÜ");
+        fw.close();
+        ContadorDeLetras contadorSolucion = new ContadorDeLetras(new File("src/main/res/mayusAcentuadas.txt"));
+        assertArrayEquals(contador.frecuencias(),contadorSolucion.frecuencias());
+    }
     /**
      *
      * @param f fichero a leer
