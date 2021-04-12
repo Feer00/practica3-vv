@@ -49,7 +49,7 @@ class MainTest {
 
     @AfterEach
     public void eliminar_fichero_temporal() throws  FileNotFoundException{
-        //ficheroTempo.delete();
+        ficheroTempo.delete();
     }
 
     @Test
@@ -73,15 +73,58 @@ class MainTest {
 
     }
 
-   /* @BeforeEach
+    @Test
+    public void comprobar_frecuencias_regenta() throws IOException {
+
+        ByteArrayInputStream byteArrayQuijote = new ByteArrayInputStream("src/main/res/regenta.txt".getBytes());
+        System.setIn(byteArrayQuijote);
+
+        ficheroTempo = new File("src/main/res/salida_Artificial.txt");
+        PrintStream salidaArtificial = new PrintStream(ficheroTempo);
+        System.setOut(salidaArtificial);
+
+        Main.main(null);
+        //Array de bytes con la salida estandar de nuestra main
+        File s = ajusta_fichero(ficheroTempo);
+        byte[] SalidaBytes = Files.readAllBytes(s.toPath());
+        //Array de bytes con la supuesta salida estandar del fichero de los profesores
+        byte[] EntradaBytes = Files.readAllBytes(Paths.get("src/test/res/salida-regenta.txt"));
+
+        assertArrayEquals(EntradaBytes,SalidaBytes);
+
+    }
+
+    @Test
+    public void comprobar_frecuencias_hamlet() throws IOException {
+
+        ByteArrayInputStream byteArrayQuijote = new ByteArrayInputStream("src/main/res/hamlet.txt".getBytes());
+        System.setIn(byteArrayQuijote);
+
+        ficheroTempo = new File("src/main/res/salida_Artificial.txt");
+        PrintStream salidaArtificial = new PrintStream(ficheroTempo);
+        System.setOut(salidaArtificial);
+
+        Main.main(null);
+        //Array de bytes con la salida estandar de nuestra main
+        File s = ajusta_fichero(ficheroTempo);
+        byte[] SalidaBytes = Files.readAllBytes(s.toPath());
+        //Array de bytes con la supuesta salida estandar del fichero de los profesores
+        byte[] EntradaBytes = Files.readAllBytes(Paths.get("src/test/res/salida-hamlet.txt"));
+
+        assertArrayEquals(EntradaBytes,SalidaBytes);
+
+    }
+
+    @BeforeEach
     public void redireccion_fichero_temporal() throws FileNotFoundException {
         ficheroTempo = new File("src/main/res/salida_Artificial.txt");
         PrintStream salidaArtificial = new PrintStream(ficheroTempo);
         System.setOut(salidaArtificial);
-    }*/
+    }
 
     @AfterAll //restauramos entrada y salida estándar
     public static void restaurar_entrada_y_salida_estandar(){
+
         System.setIn(entradaSys);
         System.setOut(salidaSys);
     }
@@ -116,7 +159,7 @@ class MainTest {
         modified.delete();
         sb.append(System.lineSeparator());
         OutputStream os = new FileOutputStream(modified,true);
-        os.write(String.valueOf(sb).getBytes(), 0, sb.length());
+        os.write(String.valueOf(sb).getBytes(), 0, sb.length()+1);
         os.close();
         return modified;
 
