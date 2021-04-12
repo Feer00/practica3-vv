@@ -69,13 +69,16 @@ public class ContadorDeLetras {
             this.frecuencias[alphabet - 1]++;
         }else {
             caracter = Normalizer.normalize(Character.toString(caracter), Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "").charAt(0);
+
             if (caracter == 'º' || caracter == '°'){
                 frecuencias['o' - 'a']++;
             }else if(caracter == 'ª' ){
                 frecuencias[0]++;
             } else {
                if (Character.isLetter(caracter)) {
-                   caracter = Character.toLowerCase(caracter);
+                   if(Character.isUpperCase(caracter)) {
+                       caracter = Character.toLowerCase(caracter);
+                   }
                    this.frecuencias[caracter - 'a']++;
                }
             }
