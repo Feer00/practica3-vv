@@ -32,7 +32,7 @@ class ContadorDeLetrasTest {
     public void comprobar_Fichero_Hamlet() throws FileNotFoundException {
         ContadorDeLetras contador = new ContadorDeLetras(new File("src/main/res/hamlet.txt"));
         int[] vectoraComparar = leerFichero(new File("src/test/res/salida-hamlet.txt"));
-        assertArrayEquals(contador.frecuencias(),vectoraComparar);
+        assertArrayEquals(vectoraComparar, contador.frecuencias());
 
     }
 
@@ -40,14 +40,14 @@ class ContadorDeLetrasTest {
     public void comprobar_Fichero_Quijote() throws  FileNotFoundException{
         ContadorDeLetras contador = new ContadorDeLetras(new File("src/main/res/quijote.txt"));
         int[] vectoraComparar = leerFichero(new File("src/test/res/salida-quijote.txt"));
-        assertArrayEquals(contador.frecuencias(),vectoraComparar);
+        assertArrayEquals(vectoraComparar,contador.frecuencias());
     }
 
     @Test   //Test numero 5 para comprobar la correcta lectura de los carácteres del fichero Regenta
     public void comprobar_Fichero_Regenta() throws  FileNotFoundException{
         ContadorDeLetras contador = new ContadorDeLetras(new File("src/main/res/regenta.txt"));
         int[] vectoraComparar = leerFichero(new File("src/test/res/salida-regenta.txt"));
-        assertArrayEquals(contador.frecuencias(),vectoraComparar);
+        assertArrayEquals(vectoraComparar,contador.frecuencias());
     }
 
     @Test  //Test numero 6 para comprobar la correcta lectura de las letras minúsculas
@@ -57,7 +57,7 @@ class ContadorDeLetrasTest {
         for (int i = 0; i<27; i++){
             vectoraComparar[i] = 1;
         }
-        assertArrayEquals(contador.frecuencias(),vectoraComparar);
+        assertArrayEquals(vectoraComparar,contador.frecuencias());
     }
 
     @Test  //Test numero 7 para comprobar la correcta lectura de las letras mayusculas
@@ -67,7 +67,7 @@ class ContadorDeLetrasTest {
         for (int i = 0; i<27; i++){
             vectoraComparar[i] = 1;
         }
-        assertArrayEquals(contador.frecuencias(),vectoraComparar);
+        assertArrayEquals(vectoraComparar,contador.frecuencias());
     }
 
     @Test  //Test numero 8 para comprobar la correcta lectura de las letras minúsculas acentuadas
@@ -79,7 +79,7 @@ class ContadorDeLetrasTest {
         vectoraComparar['i'-'a'] = 3;
         vectoraComparar['o'-'a'] = 3;
         vectoraComparar['u'-'a'] = 3;
-        assertArrayEquals(contador.frecuencias(),vectoraComparar);
+        assertArrayEquals(vectoraComparar,contador.frecuencias());
     }
 
     @Test  //Test numero 9 para comprobar la correcta lectura de las letras mayusculas acentuadas
@@ -91,7 +91,7 @@ class ContadorDeLetrasTest {
         vectoraComparar['i'-'a'] = 3;
         vectoraComparar['o'-'a'] = 3;
         vectoraComparar['u'-'a'] = 3;
-        assertArrayEquals(contador.frecuencias(),vectoraComparar);
+        assertArrayEquals(vectoraComparar,contador.frecuencias());
     }
 
     @Test  //Test numero 10 para comprobar la correcta lectura de la letra egne (mayuscula y minuscula)
@@ -99,7 +99,7 @@ class ContadorDeLetrasTest {
         ContadorDeLetras contador = new ContadorDeLetras(new File("src/main/res/egne.txt"));
         int[] vectoraComparar = new int[27];
         vectoraComparar[26] = 2;
-        assertArrayEquals(contador.frecuencias(), vectoraComparar);
+        assertArrayEquals(vectoraComparar, contador.frecuencias());
     }
 
     @Test  //Test numero 11 para comprobar la correcta lectura de la letra cedilla (mayuscula y minuscula)
@@ -107,14 +107,14 @@ class ContadorDeLetrasTest {
         ContadorDeLetras contador = new ContadorDeLetras(new File("src/main/res/cedilla.txt"));
         int[] vectoraComparar = new int[27];
         vectoraComparar['c'-'a'] = 2;
-        assertArrayEquals(contador.frecuencias(), vectoraComparar);
+        assertArrayEquals(vectoraComparar, contador.frecuencias());
     }
 
     @Test  //Test numero 12 para comprobar la correcta lectura de otros carácteres que no forman parte del abecedario
     public void comprobar_otros() throws  FileNotFoundException {
         ContadorDeLetras contador = new ContadorDeLetras(new File("src/main/res/otros.txt"));
         int[] vectoraComparar = new int[27];
-        assertArrayEquals(contador.frecuencias(), vectoraComparar);
+        assertArrayEquals(vectoraComparar, contador.frecuencias());
     }
 
     @Test  //Test numero 13 para comprobar la correcta lectura de las letras voladas ª y º
@@ -123,7 +123,7 @@ class ContadorDeLetrasTest {
         int[] vectoraComparar = new int[27];
         vectoraComparar['o' - 'a'] = 1;
         vectoraComparar[0] = 1;
-        assertArrayEquals(contador.frecuencias(),vectoraComparar);
+        assertArrayEquals(vectoraComparar,contador.frecuencias());
     }
     @Test  //Test numero 14 para comprobar la correcta lectura cuando this.frecuencias es no nulo
     public void comprobar_frecuencia_no_nulo() throws IOException,FileNotFoundException {
@@ -138,7 +138,7 @@ class ContadorDeLetrasTest {
         fw.write("ÁÀÄÉÈËÍÌÏÓÒÖÚÙÜ");
         fw.close();
         ContadorDeLetras contadorSolucion = new ContadorDeLetras(new File("src/main/res/mayusAcentuadas.txt"));
-        assertArrayEquals(contador.frecuencias(),contadorSolucion.frecuencias());
+        assertArrayEquals(contadorSolucion.frecuencias(),contador.frecuencias());
     }
     /**
      *
