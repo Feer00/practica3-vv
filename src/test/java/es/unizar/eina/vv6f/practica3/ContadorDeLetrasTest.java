@@ -127,6 +127,10 @@ class ContadorDeLetrasTest {
     }
     @Test  //Test numero 14 para comprobar la correcta lectura cuando this.frecuencias es no nulo
     public void comprobar_frecuencia_no_nulo() throws IOException,FileNotFoundException {
+        /* No entiendo lo que pretende este test. La idea era simplemente comprobar que una segunda
+        invocación a frecuencias() sigue devolviendo el valor correcto.
+         */
+
         String file = "src/main/res/mayusModificada.txt";
         FileWriter fw=new FileWriter(file);
         fw.write("QWERTYUIOPASDFGHJKLZXCVBNMÑ");
