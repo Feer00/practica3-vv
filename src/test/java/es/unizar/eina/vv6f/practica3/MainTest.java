@@ -58,9 +58,6 @@ class MainTest {
         ByteArrayInputStream byteArrayQuijote = new ByteArrayInputStream("src/main/res/quijote.txt".getBytes());
         System.setIn(byteArrayQuijote);
 
-        ficheroTempo = new File("src/main/res/salida_Artificial.txt");
-        PrintStream salidaArtificial = new PrintStream(ficheroTempo);
-        System.setOut(salidaArtificial);
 
         Main.main(null);
         //Array de bytes con la salida estandar de nuestra main
@@ -79,10 +76,6 @@ class MainTest {
         ByteArrayInputStream byteArrayQuijote = new ByteArrayInputStream("src/main/res/regenta.txt".getBytes());
         System.setIn(byteArrayQuijote);
 
-        ficheroTempo = new File("src/main/res/salida_Artificial.txt");
-        PrintStream salidaArtificial = new PrintStream(ficheroTempo);
-        System.setOut(salidaArtificial);
-
         Main.main(null);
         //Array de bytes con la salida estandar de nuestra main
         File s = ajusta_fichero(ficheroTempo);
@@ -99,10 +92,6 @@ class MainTest {
 
         ByteArrayInputStream byteArrayQuijote = new ByteArrayInputStream("src/main/res/hamlet.txt".getBytes());
         System.setIn(byteArrayQuijote);
-
-        ficheroTempo = new File("src/main/res/salida_Artificial.txt");
-        PrintStream salidaArtificial = new PrintStream(ficheroTempo);
-        System.setOut(salidaArtificial);
 
         Main.main(null);
         //Array de bytes con la salida estandar de nuestra main
