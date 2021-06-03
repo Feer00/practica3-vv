@@ -1,7 +1,7 @@
 ## Verificación y Validación
 # Práctica 3: Pruebas dinámicas de código con JUnit
 
-Proyecto de partida para la realización de la práctica 3 de
+Solución del equipo 5 a la práctica 3 de
 Verificación y Validación del Grado en Ingeniería Informática de
 la Universidad de Zaragoza. El enunciado completo se
 encuentra en Moodle. 
